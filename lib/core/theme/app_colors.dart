@@ -14,12 +14,15 @@ class AppTone {
 
 class AppColors {
   static const Color background = Color(0xFFF8FAFC);
+  static const Color backgroundAlt = Color(0xFFF1F5F9);
   static const Color surface = Color(0xFFFFFFFF);
+  static const Color surfaceElevated = Color(0xFFFEFEFF);
   static const Color surfaceMuted = Color(0xFFF1F5F9);
   static const Color textPrimary = Color(0xFF0F172A);
   static const Color textSecondary = Color(0xFF475569);
   static const Color textMuted = Color(0xFF94A3B8);
   static const Color border = Color(0xFFE2E8F0);
+  static const Color focusRing = Color(0xFF93C5FD);
   static const Color transparent = Color(0x00000000);
   static const Color scrim = Color(0x66000000);
 

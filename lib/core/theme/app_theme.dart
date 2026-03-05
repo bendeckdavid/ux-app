@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 ThemeData buildAppTheme() {
   final ThemeData base = ThemeData(
     useMaterial3: true,
-    scaffoldBackgroundColor: AppColors.background,
+    scaffoldBackgroundColor: AppColors.backgroundAlt,
     fontFamily: 'Nunito',
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.primary,
       primary: AppColors.primary,
       surface: AppColors.surface,
+      secondary: AppColors.reward,
     ),
   );
 
@@ -43,7 +44,7 @@ ThemeData buildAppTheme() {
     ),
     cardTheme: CardThemeData(
       margin: EdgeInsets.zero,
-      color: AppColors.surface,
+      color: AppColors.surfaceElevated,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppRadius.r16),
         side: const BorderSide(color: AppColors.border, width: AppBorderW.base),
