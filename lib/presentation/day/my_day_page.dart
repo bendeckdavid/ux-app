@@ -2,6 +2,7 @@ import 'task_item_card.dart';
 import '../../../app/router.dart';
 import 'package:flutter/material.dart';
 import '../widgets/child_scaffold.dart';
+import '../widgets/section_block.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_tokens.dart';
 import '../../../core/widgets/app_button.dart';
@@ -57,7 +58,7 @@ class _MyDayPageState extends State<DayPg> {
       child: ListView(
         padding: const EdgeInsets.fromLTRB(
           AppSpace.s16,
-          AppSpace.s16,
+          AppSpace.s20,
           AppSpace.s16,
           AppSpace.s16,
         ),
@@ -65,7 +66,7 @@ class _MyDayPageState extends State<DayPg> {
           Text('Mi Dia - ${profile.name}', style: AppTextStyles.title22),
           const SizedBox(height: AppSpace.s4),
           Text(profile.dateLabel, style: AppTextStyles.label14),
-          const SizedBox(height: AppSpace.s12),
+          const SizedBox(height: AppSpace.s16),
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: AppSpace.s8,
@@ -101,28 +102,36 @@ class _MyDayPageState extends State<DayPg> {
             ),
           ),
           const SizedBox(height: AppSpace.s16),
-          ProgCard(
-            title: 'Progreso de Hoy',
-            progress: progress,
-            counterLabel: '$completedCount/$total',
+          SecBlock(
+            title: 'Resumen',
+            child: ProgCard(
+              title: 'Progreso de Hoy',
+              progress: progress,
+              counterLabel: '$completedCount/$total',
+            ),
           ),
           const SizedBox(height: AppSpace.s16),
-          ...tasks.asMap().entries.map((MapEntry<int, ChildTask> entry) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: AppSpace.s8),
-              child: TaskCard(
-                index: entry.key,
-                task: entry.value,
-                onTap: () async {
-                  await Navigator.of(
-                    context,
-                  ).pushNamed(AppRoutes.activity(entry.value.id));
-                  if (!mounted) return;
-                  setState(() {});
-                },
-              ),
-            );
-          }),
+          SecBlock(
+            title: 'Tareas',
+            child: Column(
+              children: tasks.asMap().entries.map((MapEntry<int, ChildTask> entry) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: AppSpace.s8),
+                  child: TaskCard(
+                    index: entry.key,
+                    task: entry.value,
+                    onTap: () async {
+                      await Navigator.of(
+                        context,
+                      ).pushNamed(AppRoutes.activity(entry.value.id));
+                      if (!mounted) return;
+                      setState(() {});
+                    },
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
           const SizedBox(height: AppSpace.s4),
           Btn(
             label: 'Mi Alarma',

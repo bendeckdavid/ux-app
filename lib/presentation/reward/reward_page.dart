@@ -28,7 +28,7 @@ class RwdPg extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.fromLTRB(
             AppSpace.s16,
-            AppSpace.s20,
+            AppSpace.s24,
             AppSpace.s16,
             AppSpace.s16,
           ),

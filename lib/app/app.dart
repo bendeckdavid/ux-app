@@ -2,6 +2,7 @@ import 'dart:async';
 import 'router.dart';
 import '../core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import '../core/theme/app_tokens.dart';
 import '../src/alarm/alarm_notification_service.dart';
 
 class AlApp extends StatefulWidget {
@@ -55,6 +56,7 @@ class _AlarmasAppState extends State<AlApp> {
       debugShowCheckedModeBanner: false,
       navigatorKey: _navigatorKey,
       theme: buildAppTheme(),
+      themeAnimationDuration: AppMotion.switcher,
       initialRoute: AppRoutes.day,
       onGenerateRoute: onGenerateAppRoute,
     );

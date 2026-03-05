@@ -12,47 +12,50 @@ class CNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: AppSize.bottomNavH,
-      padding: const EdgeInsets.fromLTRB(
-        AppSpace.s12,
-        AppSpace.s8,
-        AppSpace.s12,
-        AppSpace.s8,
-      ),
-      decoration: const BoxDecoration(
-        color: AppColors.surface,
-        border: Border(
-          top: BorderSide(color: AppColors.border, width: AppBorderW.base),
+    return SafeArea(
+      top: false,
+      child: Container(
+        height: AppSize.bottomNavH,
+        padding: const EdgeInsets.fromLTRB(
+          AppSpace.s12,
+          AppSpace.s8,
+          AppSpace.s12,
+          AppSpace.s8,
         ),
-      ),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: _NavIt(
-              label: 'Inicio',
-              icon: Icons.home,
-              active: currentRoute == AppRoutes.day,
-              onTap: () => onSelected(AppRoutes.day),
-            ),
+        decoration: const BoxDecoration(
+          color: AppColors.surface,
+          border: Border(
+            top: BorderSide(color: AppColors.border, width: AppBorderW.base),
           ),
-          Expanded(
-            child: _NavIt(
-              label: 'Logros',
-              icon: Icons.emoji_events,
-              active: currentRoute == AppRoutes.achievements,
-              onTap: () => onSelected(AppRoutes.achievements),
+        ),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: _NavIt(
+                label: 'Inicio',
+                icon: Icons.home,
+                active: currentRoute == AppRoutes.day,
+                onTap: () => onSelected(AppRoutes.day),
+              ),
             ),
-          ),
-          Expanded(
-            child: _NavIt(
-              label: 'Alarmas',
-              icon: Icons.alarm,
-              active: currentRoute == AppRoutes.createAlarm,
-              onTap: () => onSelected(AppRoutes.createAlarm),
+            Expanded(
+              child: _NavIt(
+                label: 'Logros',
+                icon: Icons.emoji_events,
+                active: currentRoute == AppRoutes.achievements,
+                onTap: () => onSelected(AppRoutes.achievements),
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: _NavIt(
+                label: 'Alarmas',
+                icon: Icons.alarm,
+                active: currentRoute == AppRoutes.createAlarm,
+                onTap: () => onSelected(AppRoutes.createAlarm),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
