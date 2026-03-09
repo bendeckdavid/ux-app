@@ -1,0 +1,79 @@
+{
+  "childProfile": {
+    "id": "child_juan_01",
+    "name": "Juan",
+    "dayTypeLabel": "Dia de Escuela",
+    "dateLabel": "Lunes, 7 de Feb"
+  },
+  "todayTasks": [
+    {
+      "id": "t1",
+      "title": "Cepillarse",
+      "timeLabel": "7:00 AM",
+      "status": "completed",
+      "iconKey": "brush"
+    },
+    {
+      "id": "t2",
+      "title": "Tender Cama",
+      "timeLabel": "7:10 AM",
+      "status": "active",
+      "iconKey": "bed",
+      "note": "Estira bien las sabanas y acomoda la almohada"
+    },
+    {
+      "id": "t3",
+      "title": "Desayunar",
+      "timeLabel": "7:20 AM",
+      "status": "pending",
+      "iconKey": "food"
+    },
+    {
+      "id": "t4",
+      "title": "Empacar Mochila",
+      "timeLabel": "7:30 AM",
+      "status": "pending",
+      "iconKey": "backpack",
+      "note": "No olvides tu lonchera y el libro de matematicas"
+    }
+  ],
+  "achievements": {
+    "title": "Gran Semana",
+    "weekStarsFilled": 4,
+    "weekStarsTotal": 5,
+    "medals": [
+      {
+        "id": "m1",
+        "label": "Punteria",
+        "iconKey": "target",
+        "toneKey": "red"
+      },
+      {
+        "id": "m2",
+        "label": "Madrugador",
+        "iconKey": "alarm",
+        "toneKey": "orange"
+      },
+      {
+        "id": "m3",
+        "label": "Estrella",
+        "iconKey": "sparkles",
+        "toneKey": "violet"
+      }
+    ],
+    "nextMedalName": "Super Estrella",
+    "current": 20,
+    "target": 25
+  },
+  "alarms": [
+    {
+      "id": "a1",
+      "title": "Ver mi Show Favorito",
+      "timeHour12": 4,
+      "minutes": 0,
+      "isPm": true,
+      "iconKey": "tv",
+      "enabled": true
+    }
+  ]
+}
