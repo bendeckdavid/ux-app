@@ -27,14 +27,35 @@ class ProgCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(title, style: AppTextStyles.body16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              Text(
+                title.toUpperCase(),
+                style: AppTextStyles.label13,
+              ),
+              Text(
+                counterLabel,
+                style: AppTextStyles.color(
+                  AppTextStyles.size(AppTextStyles.body16, 16),
+                  progressColor,
+                ),
+              ),
+            ],
+          ),
           const SizedBox(height: AppSpace.s8),
           PBar(value: progress, color: progressColor),
-          const SizedBox(height: AppSpace.s8),
-          Text(counterLabel, style: AppTextStyles.label14),
           if (footnote != null) ...<Widget>[
-            const SizedBox(height: AppSpace.s4),
-            Text(footnote!, style: AppTextStyles.label14),
+            const SizedBox(height: AppSpace.s8),
+            Text(
+              footnote!.toUpperCase(),
+              textAlign: TextAlign.center,
+              style: AppTextStyles.color(
+                AppTextStyles.label13,
+                progressColor,
+              ),
+            ),
           ],
         ],
       ),

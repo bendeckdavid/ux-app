@@ -38,29 +38,31 @@ class AchPg extends StatelessWidget {
           children: <Widget>[
             PgHead(onBack: () => popOrGoDay(context), title: 'Mis Logros'),
             const SizedBox(height: AppSpace.s16),
-            ScIn(
-              begin: 0,
-              duration: AppMotion.scaleSpring,
-              curve: AppMotion.elasticOut,
-              child: SizedBox(
-                width: AppSize.alarmIconCircle,
-                height: AppSize.alarmIconCircle,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.rewardSoft,
-                    border: Border.fromBorderSide(
-                      BorderSide(
-                        color: AppColors.rewardBorder,
-                        width: AppBorderW.active,
+            Center(
+              child: ScIn(
+                begin: 0,
+                duration: AppMotion.scaleSpring,
+                curve: AppMotion.elasticOut,
+                child: SizedBox(
+                  width: 80,
+                  height: 80,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.rewardSoft,
+                      border: Border.fromBorderSide(
+                        BorderSide(
+                          color: const Color(0xFFFDE68A),
+                          width: AppBorderW.active,
+                        ),
                       ),
                     ),
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.emoji_events,
-                      size: AppSize.iconXl,
-                      color: AppColors.reward,
+                    child: Center(
+                      child: Icon(
+                        Icons.star_rounded,
+                        size: AppSize.iconXl,
+                        color: AppColors.reward,
+                      ),
                     ),
                   ),
                 ),
@@ -90,7 +92,10 @@ class AchPg extends StatelessWidget {
               staggerMs: AppMotion.starStaggerMs,
             ),
             const SizedBox(height: AppSpace.s16),
-            Text('Medallas Ganadas', style: AppTextStyles.body16),
+            Text(
+              'MEDALLAS GANADAS',
+              style: AppTextStyles.label13,
+            ),
             const SizedBox(height: AppSpace.s8),
             GridView.builder(
               itemCount: achievement.medals.length,
@@ -123,8 +128,7 @@ class AchPg extends StatelessWidget {
                     );
                   },
                   child: BoxCard(
-                    color: tone.background,
-                    radius: AppRadius.r12,
+                    radius: AppRadius.r16,
                     padding: const EdgeInsets.symmetric(
                       horizontal: AppSpace.s8,
                       vertical: AppSpace.s8,
@@ -143,10 +147,7 @@ class AchPg extends StatelessWidget {
                         Text(
                           medal.label,
                           textAlign: TextAlign.center,
-                          style: AppTextStyles.color(
-                            AppTextStyles.label13,
-                            tone.foreground,
-                          ),
+                          style: AppTextStyles.label13,
                         ),
                       ],
                     ),
@@ -156,26 +157,65 @@ class AchPg extends StatelessWidget {
             ),
             const SizedBox(height: AppSpace.s12),
             BoxCard(
+              color: AppColors.background,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('Siguiente Medalla', style: AppTextStyles.label14),
-                  const SizedBox(height: AppSpace.s4),
-                  Text(
-                    achievement.nextMedalName,
-                    style: AppTextStyles.size(AppTextStyles.title22, 18),
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          color: AppColors.primarySoft,
+                          borderRadius: BorderRadius.circular(AppRadius.r12),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Icon(
+                          Icons.rocket_launch,
+                          size: 20,
+                          color: AppColors.primaryHover,
+                        ),
+                      ),
+                      const SizedBox(width: AppSpace.s12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'SIGUIENTE MEDALLA',
+                              style: AppTextStyles.label13,
+                            ),
+                            Text(
+                              achievement.nextMedalName,
+                              style: AppTextStyles.size(
+                                AppTextStyles.body16,
+                                16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: AppSpace.s8),
                   PBar(value: achievement.percent, color: AppColors.primary),
                   const SizedBox(height: AppSpace.s8),
-                  Text(
-                    '${achievement.current}/${achievement.target}',
-                    style: AppTextStyles.label13,
-                  ),
-                  const SizedBox(height: AppSpace.s4),
-                  Text(
-                    'Solo faltan ${achievement.target - achievement.current}',
-                    style: AppTextStyles.label13,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        '${achievement.current}/${achievement.target}',
+                        style: AppTextStyles.label13,
+                      ),
+                      Text(
+                        'Solo faltan ${achievement.target - achievement.current}',
+                        style: AppTextStyles.color(
+                          AppTextStyles.label13,
+                          AppColors.primary,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

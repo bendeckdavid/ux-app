@@ -26,11 +26,11 @@ class AppColors {
   static const Color transparent = Color(0x00000000);
   static const Color scrim = Color(0x66000000);
 
-  static const Color primary = Color(0xFF2563EB);
-  static const Color primaryHover = Color(0xFF1D4ED8);
+  static const Color primary = Color(0xFF3B82F6);
+  static const Color primaryHover = Color(0xFF2563EB);
   static const Color primarySoft = Color(0xFFDBEAFE);
   static const Color primarySoftBorder = Color(0xFFBFDBFE);
-  static const Color primaryShadow = Color(0x332563EB);
+  static const Color primaryShadow = Color(0x333B82F6);
 
   static const Color success = Color(0xFF22C55E);
   static const Color successSoft = Color(0xFFDCFCE7);

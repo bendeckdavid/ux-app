@@ -17,7 +17,7 @@ class PBar extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(AppRadius.r20),
-        border: Border.all(color: AppColors.border, width: AppBorderW.base),
+        border: Border.all(color: color, width: AppBorderW.base),
       ),
       clipBehavior: Clip.antiAlias,
       child: Align(

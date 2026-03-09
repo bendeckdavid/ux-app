@@ -13,35 +13,45 @@ class AlmOkPg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.surface,
       body: SafeArea(
         child: PgIn(
-          child: ListView(
-            padding: const EdgeInsets.fromLTRB(
-              AppSpace.s16,
-              AppSpace.s24,
-              AppSpace.s16,
-              AppSpace.s16,
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(AppSpace.s24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const OkHead(
+                    title: 'Actividad Completada',
+                    subtitle: 'Mochila lista para la escuela',
+                    badgeSize: AppSize.heroBadge,
+                    badgeIconSize: AppSize.heroBadgeIcon,
+                    titleSize: 22,
+                    subtitleSize: 16,
+                  ),
+                  const SizedBox(height: AppSpace.s16),
+                  const SizedBox(
+                    width: double.infinity,
+                    child: ProgCard(
+                      title: 'Progreso de Rutina',
+                      progress: 1,
+                      counterLabel: '4/4',
+                      footnote: 'Rutina Completa',
+                    ),
+                  ),
+                  const SizedBox(height: AppSpace.s16),
+                  SizedBox(
+                    width: double.infinity,
+                    child: Btn(
+                      label: 'Ver Mi Dia',
+                      onPressed: () => goDayRoot(context),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            children: <Widget>[
-              const Center(
-                child: OkHead(
-                  title: 'Actividad Completada',
-                  subtitle: 'Mochila lista para la escuela',
-                  badgeSize: AppSize.heroBadge,
-                  badgeIconSize: AppSize.heroBadgeIcon,
-                ),
-              ),
-              const SizedBox(height: AppSpace.s16),
-              const ProgCard(
-                title: 'Progreso de Rutina',
-                progress: 1,
-                counterLabel: '4/4',
-                footnote: 'Rutina Completa',
-              ),
-              const SizedBox(height: AppSpace.s16),
-              Btn(label: 'Ver Mi Dia', onPressed: () => goDayRoot(context)),
-            ],
           ),
         ),
       ),

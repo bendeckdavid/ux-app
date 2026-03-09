@@ -31,7 +31,17 @@ class NoteCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(label, style: AppTextStyles.label14),
+          Row(
+            children: <Widget>[
+              const Icon(
+                Icons.description_outlined,
+                size: 14,
+                color: AppColors.textSecondary,
+              ),
+              const SizedBox(width: 6),
+              Text(label, style: AppTextStyles.label14),
+            ],
+          ),
           const SizedBox(height: AppSpace.s4),
           Text(
             text,

@@ -189,10 +189,10 @@ class _CreateAlarmPageState extends State<AlmNewPg> {
                       vertical: AppSpace.s12,
                     ),
                     decoration: BoxDecoration(
-                      color: AppColors.primarySoft,
-                      borderRadius: BorderRadius.circular(AppRadius.r12),
+                      color: AppColors.background,
+                      borderRadius: BorderRadius.circular(AppRadius.r16),
                       border: Border.all(
-                        color: AppColors.primary,
+                        color: AppColors.border,
                         width: AppBorderW.base,
                       ),
                     ),
@@ -284,20 +284,13 @@ class _CreateAlarmPageState extends State<AlmNewPg> {
         const SizedBox(height: AppSpace.s16),
         BoxCard(
           width: double.infinity,
-          child: Row(
+          child: Column(
             children: <Widget>[
               AIcon(iconKey: selectedIcon, size: AIconSz.lg),
-              const SizedBox(width: AppSpace.s12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(_nameController.text, style: AppTextStyles.body16),
-                    const SizedBox(height: AppSpace.s4),
-                    Text('$_timeLabel - Hoy', style: AppTextStyles.label13),
-                  ],
-                ),
-              ),
+              const SizedBox(height: AppSpace.s8),
+              Text(_nameController.text, style: AppTextStyles.body16),
+              const SizedBox(height: AppSpace.s4),
+              Text('$_timeLabel — Hoy', style: AppTextStyles.label13),
             ],
           ),
         ),
@@ -322,16 +315,18 @@ class _Sec extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BoxCard(
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(label, style: AppTextStyles.label14),
-          const SizedBox(height: AppSpace.s8),
-          child,
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Center(
+          child: Text(
+            label.toUpperCase(),
+            style: AppTextStyles.label13,
+          ),
+        ),
+        const SizedBox(height: AppSpace.s8),
+        child,
+      ],
     );
   }
 }

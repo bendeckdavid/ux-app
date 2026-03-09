@@ -19,7 +19,7 @@ class CScaf extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundAlt,
+      backgroundColor: AppColors.surface,
       body: SafeArea(bottom: false, child: child),
       bottomNavigationBar: CNav(
         currentRoute: currentRoute,

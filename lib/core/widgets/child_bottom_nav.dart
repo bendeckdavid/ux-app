@@ -83,18 +83,20 @@ class _NavIt extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-            padding: const EdgeInsets.all(AppSpace.s8),
+            width: 48,
+            height: 48,
             decoration: BoxDecoration(
               color: active ? AppColors.primarySoft : AppColors.transparent,
-              borderRadius: BorderRadius.circular(AppRadius.r12),
+              borderRadius: BorderRadius.circular(14),
               border: Border.all(
                 color: active ? AppColors.primary : AppColors.transparent,
-                width: active ? AppBorderW.active : AppBorderW.base,
+                width: AppBorderW.active,
               ),
             ),
+            alignment: Alignment.center,
             child: Icon(
               icon,
-              size: AppSize.iconMd,
+              size: 24,
               color: active ? AppColors.primary : AppColors.textSecondary,
             ),
           ),

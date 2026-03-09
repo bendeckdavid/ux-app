@@ -120,43 +120,29 @@ class _TaskItemCardState extends State<TaskCard>
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Container(
-                      width: AppSize.taskCheckBadge,
-                      height: AppSize.taskCheckBadge,
+                      width: 44,
+                      height: 44,
                       decoration: BoxDecoration(
                         color: AppColors.successSoft,
-                        shape: BoxShape.circle,
+                        borderRadius: BorderRadius.circular(AppRadius.r12),
                         border: Border.all(
-                          color: AppColors.success,
+                          color: const Color(0xFFBBF7D0),
                           width: AppBorderW.base,
                         ),
                       ),
                       alignment: Alignment.center,
                       child: const Icon(
                         Icons.check,
-                        size: AppSize.iconSm,
+                        size: 22,
                         color: AppColors.success,
                       ),
                     ),
                     const SizedBox(width: AppSpace.s8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpace.s8,
-                        vertical: AppSpace.s4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.successSoft,
-                        borderRadius: BorderRadius.circular(AppRadius.r20),
-                        border: Border.all(
-                          color: AppColors.success,
-                          width: AppBorderW.base,
-                        ),
-                      ),
-                      child: Text(
-                        'Hecho',
-                        style: AppTextStyles.color(
-                          AppTextStyles.size(AppTextStyles.label12, 11),
-                          AppColors.success,
-                        ),
+                    Text(
+                      'HECHO',
+                      style: AppTextStyles.color(
+                        AppTextStyles.label12,
+                        AppColors.textMuted,
                       ),
                     ),
                   ],
@@ -170,9 +156,19 @@ class _TaskItemCardState extends State<TaskCard>
                         _controller.value * AppOffset.activeChevronX,
                         0,
                       ),
-                      child: const Icon(
-                        Icons.chevron_right,
-                        color: AppColors.primary,
+                      child: Container(
+                        width: 44,
+                        height: 44,
+                        decoration: const BoxDecoration(
+                          color: AppColors.primary,
+                          shape: BoxShape.circle,
+                        ),
+                        alignment: Alignment.center,
+                        child: const Icon(
+                          Icons.chevron_right,
+                          color: AppColors.surface,
+                          size: 26,
+                        ),
                       ),
                     );
                   },

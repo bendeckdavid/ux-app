@@ -57,11 +57,11 @@ class _AlarmOverlayPageState extends State<AlmOvPg>
                 duration: AppMotion.pageIn,
                 curve: AppMotion.easeOutBack,
                 child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: AppSpace.s16),
-                  padding: const EdgeInsets.all(AppSpace.s16),
+                  margin: const EdgeInsets.symmetric(horizontal: AppSpace.s20),
+                  padding: const EdgeInsets.all(AppSpace.s20),
                   decoration: BoxDecoration(
                     color: AppColors.surface,
-                    borderRadius: BorderRadius.circular(AppRadius.r20),
+                    borderRadius: BorderRadius.circular(AppRadius.r24),
                     border: Border.all(
                       color: AppColors.primary,
                       width: AppBorderW.emphasis,
@@ -103,7 +103,7 @@ class _AlarmOverlayPageState extends State<AlmOvPg>
                       const SizedBox(height: AppSpace.s8),
                       Text(
                         'Hora de Empacar',
-                        style: AppTextStyles.title28,
+                        style: AppTextStyles.title24,
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: AppSpace.s4),
