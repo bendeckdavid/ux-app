@@ -6,12 +6,16 @@ class ChildProfile {
     required this.name,
     required this.dayTypeLabel,
     required this.dateLabel,
+    required this.streakDays,
+    required this.motivationalLine,
   });
 
   final String id;
   final String name;
   final String dayTypeLabel;
   final String dateLabel;
+  final int streakDays;
+  final String motivationalLine;
 }
 
 class ChildTask {

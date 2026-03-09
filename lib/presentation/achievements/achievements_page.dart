@@ -21,8 +21,9 @@ class AchPg extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ChildMockRepository repo = ChildMockRepository.instance;
     final AchievementProgress achievement =
-        ChildMockRepository.instance.achievements;
+        repo.achievements;
 
     return CScaf(
       currentRoute: AppRoutes.achievements,
@@ -70,6 +71,15 @@ class AchPg extends StatelessWidget {
               achievement.title,
               textAlign: TextAlign.center,
               style: AppTextStyles.title24,
+            ),
+            const SizedBox(height: AppSpace.s4),
+            Text(
+              repo.streakLabel,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.color(
+                AppTextStyles.label14,
+                AppColors.primary,
+              ),
             ),
             const SizedBox(height: AppSpace.s8),
             StarRow(

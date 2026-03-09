@@ -16,7 +16,14 @@ class PgHead extends StatelessWidget {
         BackBtn(onTap: onBack),
         if (title != null) ...<Widget>[
           const SizedBox(width: AppSpace.s8),
-          Text(title!, style: AppTextStyles.title22),
+          Expanded(
+            child: Text(
+              title!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.title22,
+            ),
+          ),
         ],
       ],
     );

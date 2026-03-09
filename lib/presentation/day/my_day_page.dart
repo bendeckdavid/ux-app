@@ -67,38 +67,73 @@ class _MyDayPageState extends State<DayPg> {
           const SizedBox(height: AppSpace.s4),
           Text(profile.dateLabel, style: AppTextStyles.label14),
           const SizedBox(height: AppSpace.s16),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSpace.s8,
-              vertical: AppSpace.s8,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.successSoft,
-              borderRadius: BorderRadius.circular(AppRadius.r20),
-              border: Border.all(
-                color: AppColors.success,
-                width: AppBorderW.base,
-              ),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const AIcon(
-                  iconKey: 'backpack',
-                  size: AIconSz.sm,
-                  bgColor: AppColors.successSoft,
-                  borderColor: AppColors.successSoftBorder,
-                  iconColor: AppColors.successStrong,
+          Wrap(
+            spacing: AppSpace.s8,
+            runSpacing: AppSpace.s8,
+            children: <Widget>[
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpace.s8,
+                  vertical: AppSpace.s8,
                 ),
-                const SizedBox(width: AppSpace.s8),
-                Text(
-                  profile.dayTypeLabel,
-                  style: AppTextStyles.color(
-                    AppTextStyles.label12,
-                    AppColors.successStrong,
+                decoration: BoxDecoration(
+                  color: AppColors.successSoft,
+                  borderRadius: BorderRadius.circular(AppRadius.r20),
+                  border: Border.all(
+                    color: AppColors.success,
+                    width: AppBorderW.base,
                   ),
                 ),
-              ],
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    const AIcon(
+                      iconKey: 'backpack',
+                      size: AIconSz.sm,
+                      bgColor: AppColors.successSoft,
+                      borderColor: AppColors.successSoftBorder,
+                      iconColor: AppColors.successStrong,
+                    ),
+                    const SizedBox(width: AppSpace.s8),
+                    Text(
+                      profile.dayTypeLabel,
+                      style: AppTextStyles.color(
+                        AppTextStyles.label12,
+                        AppColors.successStrong,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpace.s8,
+                  vertical: AppSpace.s8,
+                ),
+                decoration: BoxDecoration(
+                  color: AppColors.primarySoft,
+                  borderRadius: BorderRadius.circular(AppRadius.r20),
+                  border: Border.all(
+                    color: AppColors.primary,
+                    width: AppBorderW.base,
+                  ),
+                ),
+                child: Text(
+                  _repo.streakLabel,
+                  style: AppTextStyles.color(
+                    AppTextStyles.label12,
+                    AppColors.primary,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: AppSpace.s8),
+          Text(
+            profile.motivationalLine,
+            style: AppTextStyles.color(
+              AppTextStyles.body16Regular,
+              AppColors.textSecondary,
             ),
           ),
           const SizedBox(height: AppSpace.s16),

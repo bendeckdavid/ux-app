@@ -1,5 +1,6 @@
 import '../widgets/page_entrance.dart';
 import 'package:flutter/material.dart';
+import '../../../app/router.dart';
 import '../widgets/child_navigation.dart';
 import '../widgets/child_icon_button.dart';
 import '../widgets/child_page_header.dart';
@@ -12,6 +13,7 @@ import '../widgets/child_success_header.dart';
 import '../../../core/widgets/app_button.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/activity_icon.dart';
+import '../../../src/alarm/alarm_notification_service.dart';
 
 class AlmNewPg extends StatefulWidget {
   const AlmNewPg({super.key});
@@ -24,12 +26,15 @@ class _CreateAlarmPageState extends State<AlmNewPg> {
   final TextEditingController _nameController = TextEditingController(
     text: 'Ver mi Show Favorito',
   );
+  final AlarmNotificationService _alarmService =
+      AlarmNotificationService.instance;
 
   int step = 1;
   int hour = 4;
   int minutes = 0;
   bool isPm = true;
   String selectedIcon = 'tv';
+  bool _saving = false;
 
   static const List<String> _iconOptions = <String>[
     'sport',
@@ -76,6 +81,62 @@ class _CreateAlarmPageState extends State<AlmNewPg> {
   String get _timeLabel {
     final String mm = minutes.toString().padLeft(2, '0');
     return '$hour:$mm ${isPm ? 'PM' : 'AM'}';
+  }
+
+  DateTime _nextAlarmDateTime() {
+    final DateTime now = DateTime.now();
+    final int hour24 = isPm ? (hour % 12) + 12 : (hour % 12);
+
+    DateTime candidate = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      hour24,
+      minutes,
+    );
+    if (!candidate.isAfter(now)) {
+      candidate = candidate.add(const Duration(days: 1));
+    }
+
+    return candidate;
+  }
+
+  Future<void> _createAlarm() async {
+    final String name = _nameController.text.trim();
+    if (name.isEmpty || _saving) return;
+
+    setState(() => _saving = true);
+    try {
+      final AlarmPermissionStatus permissions = await _alarmService
+          .ensureAlarmPermissions();
+      if (!permissions.canScheduleAlarm) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Activa permisos para crear la alarma')),
+        );
+        return;
+      }
+
+      await _alarmService.scheduleAlarm(
+        alarmId: 20001,
+        when: _nextAlarmDateTime(),
+        payload: AppRoutes.alarm,
+        title: name,
+        body: 'No olvides completar la actividad',
+      );
+
+      if (!mounted) return;
+      setState(() => step = 2);
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('No se pudo crear la alarma')),
+      );
+    } finally {
+      if (mounted) {
+        setState(() => _saving = false);
+      }
+    }
   }
 
   @override
@@ -203,10 +264,10 @@ class _CreateAlarmPageState extends State<AlmNewPg> {
         ),
         const SizedBox(height: AppSpace.s16),
         Btn(
-          label: 'Crear Mi Alarma',
-          onPressed: _nameController.text.trim().isEmpty
+          label: _saving ? 'Guardando...' : 'Crear Mi Alarma',
+          onPressed: _nameController.text.trim().isEmpty || _saving
               ? null
-              : () => setState(() => step = 2),
+              : _createAlarm,
         ),
       ],
     );
